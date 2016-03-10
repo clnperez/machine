@@ -164,7 +164,7 @@ func (h *Host) Restart() error {
 	return h.WaitForDocker()
 }
 
-func (h *Host) Upgrade() error {
+func (h *Host) Upgrade(pkg string) error {
 	machineState, err := h.Driver.GetState()
 	if err != nil {
 		return err
@@ -179,7 +179,7 @@ func (h *Host) Upgrade() error {
 		return err
 	}
 
-	log.Info("Upgrading docker...")
+	log.Info("Upgrading %s...", pkg)
 	if err := provisioner.Package("docker", pkgaction.Upgrade); err != nil {
 		return err
 	}

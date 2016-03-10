@@ -747,7 +747,7 @@ func (d *Driver) Remove() error {
 	return nil
 }
 
-func (d *Driver) Upgrade() error {
+func (d *Driver) Upgrade(pkg string) error {
 	return fmt.Errorf("upgrade is not supported for vsphere driver at this moment")
 }
 

@@ -358,6 +358,6 @@ func (c *RPCClientDriver) Kill() error {
 	return c.Client.Call(KillMethod, struct{}{}, nil)
 }
 
-func (c *RPCClientDriver) Upgrade() error {
+func (c *RPCClientDriver) Upgrade(pkg string) error {
 	return c.Client.Call(UpgradeMethod, struct{}{}, nil)
 }

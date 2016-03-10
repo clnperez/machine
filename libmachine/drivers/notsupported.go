@@ -84,6 +84,6 @@ func (d *DriverNotSupported) Kill() error {
 	return NotSupported{d.DriverName()}
 }
 
-func (d *DriverNotSupported) Upgrade() error {
+func (d *DriverNotSupported) Upgrade(pkg string)  error {
 	return NotSupported{d.DriverName()}
 }

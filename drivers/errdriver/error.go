@@ -99,6 +99,6 @@ func (d *Driver) Kill() error {
 	return NotLoadable{d.Name}
 }
 
-func (d *Driver) Upgrade() error {
+func (d *Driver) Upgrade(pkg string) error {
 	return NotLoadable{d.Name}
 }

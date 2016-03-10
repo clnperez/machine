@@ -62,11 +62,6 @@ func (provisioner *UbuntuSystemdProvisioner) Package(name string, action pkgacti
 		updateMetadata = false
 	}
 
-	switch name {
-	case "docker":
-		name = "docker-engine"
-	}
-
 	if updateMetadata {
 		if _, err := provisioner.SSHCommand("sudo apt-get update"); err != nil {
 			return err

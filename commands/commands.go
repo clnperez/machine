@@ -20,6 +20,7 @@ import (
 
 const (
 	defaultMachineName = "default"
+    defaultDockerPackage = "docker-engine"
 )
 
 var (
@@ -376,8 +377,15 @@ var Commands = []cli.Command{
 	{
 		Name:        "upgrade",
 		Usage:       "Upgrade a machine to the latest version of Docker",
-		Description: "Argument(s) are one or more machine names.",
+		Description: "Argument(s) are one or more machine names and an option docker package name.",
 		Action:      runCommand(cmdUpgrade),
+        Flags: []cli.Flag{
+            cli.StringFlag{
+                Name:  "package",
+                Usage: "Specify a docker package name if other than default 'docker-engine'",
+                Value: defaultDockerPackage,
+            },
+        },
 	},
 	{
 		Name:        "url",
@@ -415,7 +423,6 @@ func machineCommand(actionName string, host *host.Host, errorChan chan<- error) 
 		"stop":          host.Stop,
 		"restart":       host.Restart,
 		"kill":          host.Kill,
-		"upgrade":       host.Upgrade,
 		"ip":            printIP(host),
 		"provision":     host.Provision,
 	}
